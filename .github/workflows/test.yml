@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
   push:
-    branches: [ master, github-actions ]
+    branches: [ master, github-actions, add_python_3_12_new_functions ]
   pull_request:
     branches: [ master ]
 
