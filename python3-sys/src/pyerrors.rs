@@ -16,6 +16,10 @@ extern "C" {
         arg3: *mut *mut PyObject,
     ) -> ();
     pub fn PyErr_Restore(arg1: *mut PyObject, arg2: *mut PyObject, arg3: *mut PyObject) -> ();
+    #[cfg(Py_3_12)]
+    pub fn PyErr_GetRaisedException() -> *mut PyObject;
+    #[cfg(Py_3_12)]
+    pub fn PyErr_SetRaisedException(exc: *mut PyObject) -> ();
     pub fn PyErr_GetExcInfo(
         arg1: *mut *mut PyObject,
         arg2: *mut *mut PyObject,
@@ -40,6 +44,10 @@ extern "C" {
     pub fn PyException_SetCause(arg1: *mut PyObject, arg2: *mut PyObject) -> ();
     pub fn PyException_GetContext(arg1: *mut PyObject) -> *mut PyObject;
     pub fn PyException_SetContext(arg1: *mut PyObject, arg2: *mut PyObject) -> ();
+    #[cfg(Py_3_12)]
+    pub fn PyException_GetArgs(ex: *mut PyObject) -> *mut PyObject;
+    #[cfg(Py_3_12)]
+    pub fn PyException_SetArgs(ex: *mut PyObject, args: *mut PyObject) -> ();
 }
 
 #[inline]

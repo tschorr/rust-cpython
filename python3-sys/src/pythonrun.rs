@@ -251,6 +251,8 @@ extern "C" {
     pub fn PyErr_Print() -> ();
     pub fn PyErr_PrintEx(arg1: c_int) -> ();
     pub fn PyErr_Display(arg1: *mut PyObject, arg2: *mut PyObject, arg3: *mut PyObject) -> ();
+    #[cfg(Py_3_12)]
+    pub fn PyErr_DisplayException(exc: *mut PyObject) -> ();
 
     // TODO: these moved to pylifecycle.h
     pub fn Py_AtExit(func: Option<extern "C" fn() -> ()>) -> c_int;
